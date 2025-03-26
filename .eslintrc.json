@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "extends": ["@nuxtjs/eslint-config-typescript", "plugin:prettier/recommended"],
+  "rules": {
+    "dot-notation": [
+      "error",
+      {
+        "allowKeywords": true,
+        "allowPattern": "^[a-z]+$"
+      }
+    ],
+    "indent": "off",
+    "vue/script-indent": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false,
+        "trailingComma": "none",
+        "printWidth": 100,
+        "bracketSpacing": true,
+        "arrowParens": "always",
+        "vueIndentScriptAndStyle": true
+      }
+    ]
+  }
+}
