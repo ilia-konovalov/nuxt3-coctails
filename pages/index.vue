@@ -9,7 +9,6 @@
   const router = useRouter()
   const { validateAndRedirect } = useValidateCocktail()
 
-  // Redirect to the first cocktail
   onMounted(async () => {
     const isValid = await validateAndRedirect(availableCocktails[0])
     if (isValid) {

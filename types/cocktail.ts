@@ -6,6 +6,7 @@ export interface Cocktail {
   strGlass: string
   strInstructions: string
   strDrinkThumb: string
+  [key: string]: string | null
 }
 
 export const availableCocktails = ['margarita', 'mojito', 'a1', 'kir'] as const

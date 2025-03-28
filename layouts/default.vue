@@ -28,8 +28,8 @@
   .nav-list {
     display: flex;
     list-style: none;
-    padding: 1rem 0;
-    gap: 1rem;
+    padding: 20px 0;
+    gap: 20px;
     flex-wrap: wrap;
   }
 

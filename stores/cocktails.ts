@@ -1,4 +1,3 @@
-import { defineStore } from 'pinia'
 import type { Cocktail, CocktailCode } from '~/types/cocktail'
 
 export const useCocktailsStore = defineStore('cocktails', () => {
@@ -13,15 +12,20 @@ export const useCocktailsStore = defineStore('cocktails', () => {
   const isLoading = computed(() => loading.value)
   const getError = computed(() => error.value)
 
-  async function fetchCocktails(cocktailCode: CocktailCode) {
-    // If we already have the data, don't fetch it again
-    if (cocktails.value[cocktailCode]) {
-      return
+  function getIngredients(cocktail: Cocktail) {
+    const ingredients: string[] = []
+    for (let i = 1; i <= 10; i++) {
+      const ingredient = cocktail[`strIngredient${i}` as keyof Cocktail]
+      const measure = cocktail[`strMeasure${i}` as keyof Cocktail]
+
+      if (ingredient) {
+        ingredients.push(`${measure || ''} ${ingredient}`.trim())
+      }
     }
+    return ingredients
+  }
 
-    loading.value = true
-    error.value = null
-
+  async function fetchCocktails(cocktailCode: CocktailCode) {
     try {
       const response = await fetch(
         `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailCode}`
@@ -42,6 +46,7 @@ export const useCocktailsStore = defineStore('cocktails', () => {
       error.value = err instanceof Error ? err.message : 'An error occurred'
     } finally {
       loading.value = false
+      error.value = null
     }
   }
 
@@ -52,6 +57,7 @@ export const useCocktailsStore = defineStore('cocktails', () => {
     getCocktailsByType,
     isLoading,
     getError,
+    getIngredients,
     fetchCocktails
   }
 })

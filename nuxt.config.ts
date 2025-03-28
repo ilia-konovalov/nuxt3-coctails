@@ -1,6 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-import { defineNuxtConfig } from 'nuxt/config'
-
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@pinia/nuxt'],
@@ -15,5 +12,5 @@ export default defineNuxtConfig({
       ]
     }
   },
-  compatibilityDate: '2025-03-27',
+  compatibilityDate: '2025-03-27'
 })
